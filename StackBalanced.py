@@ -1,3 +1,7 @@
+#Program to test input is Balanced Parentheses or not. Below is test input
+# {[]{()}} - Balanced
+# [{}{})(] - Unbalanced
+# ((() - Unbalanced
 # create a ist of all open and close parentheses
 open_list=["[","{","("]
 close_list=["]","}",")"]
