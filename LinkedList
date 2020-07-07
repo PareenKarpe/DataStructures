@@ -1,0 +1,124 @@
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+
+
+
+
+class LinkedList:
+
+    def __init__(self):
+        self.head=None
+
+    def append(self,data):
+        new_node = Node(data)
+        if self.head == None:
+            self.head= new_node
+            return
+        last_node=self.head
+        while last_node.next:
+            last_node=last_node.next
+        last_node.next=new_node
+    def prepend(self,data):
+        new_node=Node(data)
+        new_node.next=self.head
+        self.head=new_node
+    def insert(self,prev_node,data):
+        if not prev_node:
+            print("no prev node")
+            return
+        new_node= Node(data)
+        new_node.next = prev_node.next
+        prev_node.next= new_node
+    def print_all(self):
+        current= self.head
+        while current:
+            print(current.data)
+            current=current.next
+    def delete_node(self,key):
+        current=self.head
+        #if list is not empty and match if the input is same as head
+        if current and current.data==key:
+            self.head=current.next
+            current=None
+            return
+        #if it is randomly in between list
+        prev=None
+        while current.data !=key:
+            prev=current
+            current=current.next
+        if current is not None:
+            prev.next=current.next
+            current=None
+            return
+    def del_pos(self,pos):
+        current=self.head
+        prev=None
+        count=1
+        #deletion at head
+        if pos==0:
+            self.head=current.next
+            current=None
+            return
+        #deletion at any node
+        elif pos>0:
+            while count!=pos:
+                prev=current
+                current=current.next
+                count+=1
+            prev.next=current.next
+            current=None
+    def insert_pos(self,pos,data):
+        current=self.head
+        prev=None
+        count=1
+        new_node= Node(data)
+        #add in begining
+        if pos == 0:
+            new_node.next=current
+            self.head=new_node
+            return
+        #add anywhere
+        if pos>0:
+            while count!=pos:
+                prev=current
+                current=current.next
+            new_node.next=current.next
+            current.next=new_node
+            return
+        #add at end by checking length of linkedlist tomorrow
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if __name__ =='__main__':
+    ll=LinkedList()
+    ll.append("A")
+    ll.append("B")
+    ll.append("C")
+
+    ll.insert(ll.head.next.next,"E")
+    ll.insert_pos(1,"X")
+    ll.print_all()
+
+
+
+
+
+
+
+
