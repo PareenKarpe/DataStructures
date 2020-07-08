@@ -82,9 +82,16 @@ class LinkedList:
             return
         #add anywhere
         if pos>0:
-            while count!=pos:
+            while count!=pos and current.next is not None:
+
                 prev=current
                 current=current.next
+            #add in the end
+            if current.next is None:
+                current.next=new_node
+                new_node.next=None
+                return
+
             new_node.next=current.next
             current.next=new_node
             return
@@ -111,8 +118,8 @@ if __name__ =='__main__':
     ll.append("B")
     ll.append("C")
 
-    ll.insert(ll.head.next.next,"E")
-    ll.insert_pos(1,"X")
+
+    ll.insert_pos(2,"X")
     ll.print_all()
 
 
